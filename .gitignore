@@ -1,0 +1,6 @@
+/.vagrant
+/ca.crt
+/elasticsearch-8.0.0-x86_64.rpm
+/elasticsearch-8.0.0-x86_64.rpm.sha512
+/kibana-8.0.0-x86_64.rpm
+/kibana-8.0.0-x86_64.rpm.sha512
