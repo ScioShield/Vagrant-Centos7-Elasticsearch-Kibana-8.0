@@ -1,4 +1,4 @@
-# Vagrant-Centos7-Elasticsearch-Kibana
+# Vagrant-Centos7-Elasticsearch-Kibana-8
 Vagrantfile to setup single node ES + Kib cluster  
 To start the Vagrant VM run <code>vagrant up</code>  
 To log in run <code>vagrant ssh</code>  
