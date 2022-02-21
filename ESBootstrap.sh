@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 # This will only work on Centos 7 (it has not been tested on other distros)
 
+# Test if the VM can reach the internet to download packages
+itest=$(ping -c 1 google.com | grep "bytes from")
+while [ "$itest" == "" ]
+do
+    sleep 1
+    itest=$(ping -c 1 google.com | grep "bytes from")
+done
+echo "online"
+
 # Install Elasticsearch, Kibana, and Unzip
 yum install -y unzip wget
 
@@ -44,7 +53,6 @@ unzip /tmp/certs/elastic-stack-ca.zip -d /tmp/certs/
 /usr/share/elasticsearch/bin/elasticsearch-certutil cert --ca-cert /tmp/certs/ca/ca.crt -ca-key /tmp/certs/ca/ca.key --ca-pass secret --pem --in /tmp/certs/instance.yml --out /tmp/certs/certs.zip
 unzip /tmp/certs/certs.zip -d /tmp/certs/
 
-mkdir /etc/elasticsearch/certs
 mkdir /etc/kibana/certs
 
 cp /tmp/certs/ca/ca.crt /tmp/certs/elasticsearch/* /etc/elasticsearch/certs
